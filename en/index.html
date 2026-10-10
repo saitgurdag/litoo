@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="9wZXLQNYWeI4FpYdCwGGe9NH8iSoCzPXbeSFfM9J6qc" />
+  <meta name="description" content="Litoo is a mobile reading app that helps you learn English through stories, instant translations, pronunciation, and vocabulary practice.">
+
+  <link rel="canonical" href="https://litooapp.com/en/">
+  <link rel="alternate" hreflang="tr" href="https://litooapp.com/">
+  <link rel="alternate" hreflang="en" href="https://litooapp.com/en/">
+  <link rel="alternate" hreflang="x-default" href="https://litooapp.com/">
+  <meta name="theme-color" content="#fbcf21">
+  <title>Litoo — Read &amp; Learn English</title>
+  <link rel="icon" type="image/webp" href="/assets/brand.webp">
+  <style>
+    :root {
+      --yellow: #fbcf21;
+      --yellow-dark: #e4b900;
+      --ink: #111827;
+      --ink-soft: #344054;
+      --paper: #fffdf4;
+      --white: #ffffff;
+      --line: rgba(17, 24, 39, .12);
+      --shadow: 0 28px 70px rgba(17, 24, 39, .18);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    .shell { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      position: absolute;
+      z-index: 5;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 24px 0;
+    }
+    nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { color: var(--white); display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 850; font-size: 1.25rem; }
+    .brand-mark {
+      display: block;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      box-shadow: 0 10px 24px rgba(251, 207, 33, .24);
+      object-fit: cover;
+    }
+    .nav-link { color: rgba(255,255,255,.78); font-size: .95rem; text-decoration: none; }
+    .nav-link:hover, .nav-link:focus-visible { color: var(--yellow); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 760px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 18% 20%, rgba(251,207,33,.16), transparent 32%),
+        linear-gradient(135deg, #101827 0%, #07101e 100%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -190px;
+      top: -150px;
+      border: 1px solid rgba(251,207,33,.18);
+      border-radius: 50%;
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      min-height: 760px;
+      grid-template-columns: 1.04fr .96fr;
+      align-items: center;
+      gap: 64px;
+      padding: 118px 0 72px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 20px;
+      color: var(--yellow);
+      font-weight: 750;
+      font-size: .86rem;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 30px; height: 2px; background: currentColor; }
+    h1 {
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(3rem, 6vw, 5.6rem);
+      line-height: .99;
+      letter-spacing: -.065em;
+    }
+    h1 span { color: var(--yellow); }
+    .lead {
+      max-width: 650px;
+      margin: 26px 0 32px;
+      color: #cad2df;
+      font-size: clamp(1.08rem, 2vw, 1.25rem);
+      line-height: 1.75;
+    }
+    .store-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .store-button {
+      display: inline-flex;
+      min-height: 58px;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 18px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 15px;
+      color: var(--white);
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(12px);
+      text-decoration: none;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .store-button:hover, .store-button:focus-visible { transform: translateY(-2px); border-color: var(--yellow); background: rgba(255,255,255,.12); }
+    .store-button svg { width: 27px; height: 27px; flex: 0 0 auto; }
+    .store-button small, .store-button strong { display: block; line-height: 1.08; }
+    .store-button small { margin-bottom: 4px; color: #bfc8d7; font-size: .68rem; }
+    .store-button strong { font-size: 1rem; }
+
+    .visual { position: relative; display: flex; justify-content: center; align-items: center; }
+    .visual::before {
+      content: "";
+      position: absolute;
+      inset: 13% 3% 7% 14%;
+      border-radius: 50%;
+      background: var(--yellow);
+      filter: blur(65px);
+      opacity: .19;
+    }
+    .device-frame {
+      position: relative;
+      width: min(100%, 335px);
+      padding: 10px;
+      border: 2px solid rgba(255,255,255,.18);
+      border-radius: 43px;
+      background: #060a11;
+      box-shadow: var(--shadow);
+    }
+    .device-frame::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 17px;
+      left: 50%;
+      width: 31%;
+      height: 22px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: #000;
+    }
+    .device-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 33px;
+    }
+
+    .features { padding: 94px 0 98px; }
+    .section-head { max-width: 700px; margin-bottom: 44px; }
+    .section-head p { margin: 0 0 9px; color: #967c00; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .82rem; }
+    h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.12; letter-spacing: -.045em; }
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .feature-card {
+      min-height: 220px;
+      padding: 27px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 12px 34px rgba(17,24,39,.05);
+    }
+    .icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      margin-bottom: 24px;
+      border-radius: 13px;
+      background: var(--yellow);
+      font-size: 1.2rem;
+    }
+    h3 { margin: 0 0 9px; font-size: 1.14rem; letter-spacing: -.02em; }
+    .feature-card p { margin: 0; color: var(--ink-soft); line-height: 1.68; }
+
+    .statement {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 90px;
+      padding: 45px;
+      border-radius: 28px;
+      color: var(--white);
+      background: var(--ink);
+    }
+    .statement h2 { margin-bottom: 10px; font-size: clamp(1.8rem, 4vw, 3rem); }
+    .statement p { max-width: 690px; margin: 0; color: #c8d0dd; }
+    .privacy-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 22px;
+      border-radius: 14px;
+      color: var(--ink);
+      background: var(--yellow);
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .privacy-button:hover, .privacy-button:focus-visible { background: #ffe163; }
+
+    footer { padding: 30px 0; border-top: 1px solid var(--line); color: #667085; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    footer a { color: var(--ink); text-underline-offset: 3px; }
+
+    :focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; padding-top: 132px; }
+      .hero-copy { text-align: center; }
+      .eyebrow, .store-row { justify-content: center; }
+      .lead { margin-left: auto; margin-right: auto; }
+      .device-frame { width: min(76%, 335px); }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .statement { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .shell { width: min(100% - 28px, 1160px); }
+      header { padding-top: 18px; }
+      .nav-link[href="/privacy_policy.html"] { display: none; }
+      .hero-grid { padding-top: 105px; padding-bottom: 54px; }
+      h1 { font-size: clamp(2.75rem, 15vw, 4rem); }
+      .lead { margin-top: 21px; font-size: 1rem; }
+      .store-button { flex: 1 1 180px; justify-content: center; }
+      .device-frame { width: min(82%, 320px); }
+      .features { padding: 70px 0 72px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature-card { min-height: auto; }
+      .statement { padding: 30px 24px; margin-bottom: 64px; }
+      .privacy-button { width: 100%; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="shell" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Litoo home"><img class="brand-mark" src="/assets/brand.webp" width="42" height="42" alt=""><span>Litoo</span></a>
+      <div><a class="nav-link" data-locale="tr" href="/">Türkçe</a> &nbsp; <a class="nav-link" href="/privacy_policy.html">Privacy Policy</a></div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Read. Understand. Remember.</p>
+          <h1 id="hero-title">Learn English through <span>stories.</span></h1>
+          <p class="lead">Litoo is a mobile reading and English-learning app. Read books and stories, tap any word or sentence for an instant translation, hear natural pronunciation, and build lasting vocabulary with smart flashcards.</p>
+          <div class="store-row" aria-label="Download Litoo">
+            <a class="store-button" href="https://apps.apple.com/app/id6742233378" target="_blank" rel="noopener noreferrer" data-store="ios" data-placement="hero" aria-label="Download Litoo on the App Store">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.79 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.1v-.01ZM12.03 7.25C11.88 5.02 13.69 3.18 15.77 3c.29 2.58-2.34 4.5-3.74 4.25Z"/></svg>
+              <span><small>Download on the</small><strong>App Store</strong></span>
+            </a>
+            <a class="store-button" href="https://play.google.com/store/apps/details?id=com.defter.englishbooks" target="_blank" rel="noopener noreferrer" data-store="android" data-placement="hero" aria-label="Get Litoo on Google Play">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#00D0FF" d="M3.6 2.1 13.7 12 3.6 21.9A1.9 1.9 0 0 1 3 20.5v-17c0-.55.22-1.05.6-1.4Z"/>
+                <path fill="#00E676" d="m3.6 2.1 12.2 6.95L13.7 12 3.6 2.1Z"/>
+                <path fill="#FF3D71" d="m13.7 12 2.1 2.95L3.6 21.9 13.7 12Z"/>
+                <path fill="#FFD500" d="m15.8 9.05 3.9 2.2c.8.45.8 1.05 0 1.5l-3.9 2.2L13.7 12l2.1-2.95Z"/>
+              </svg>
+              <span><small>Get it on</small><strong>Google Play</strong></span>
+            </a>
+          </div>
+        </div>
+        <div class="visual">
+          <div class="device-frame">
+            <img src="/assets/home.webp" width="520" height="1132" alt="Litoo home screen showing graded English reading content" loading="eager">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features shell" aria-labelledby="features-title">
+      <div class="section-head">
+        <p>Built for focused reading</p>
+        <h2 id="features-title">Everything you need to turn reading into learning.</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><div class="icon" aria-hidden="true">↗</div><h3>Instant translation</h3><p>Tap a word or sentence to understand it without leaving your story.</p></article>
+        <article class="feature-card"><div class="icon" aria-hidden="true">◉</div><h3>Natural pronunciation</h3><p>Listen to words and improve the way you recognize and pronounce them.</p></article>
+        <article class="feature-card"><div class="icon" aria-hidden="true">◆</div><h3>Smart flashcards</h3><p>Save useful vocabulary and revisit it with focused practice.</p></article>
+        <article class="feature-card"><div class="icon" aria-hidden="true">☾</div><h3>Read anywhere</h3><p>Enjoy a comfortable reading experience with light, dark, and offline modes.</p></article>
+      </div>
+    </section>
+
+    <section class="statement shell" aria-labelledby="privacy-title">
+      <div><h2 id="privacy-title">Your reading stays personal.</h2><p>Learn how Litoo handles information and protects your privacy while you use the app.</p></div>
+      <a class="privacy-button" href="/privacy_policy.html">Read Privacy Policy</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-row"><span>© <span id="year">2026</span> Litoo. All rights reserved.</span><a href="/privacy_policy.html">Privacy Policy</a></div>
+  </footer>
+
+  <script src="/assets/growth.js" defer></script>
+</body>
+</html>
