@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="İlk hikâyene Litoo’da başla. iPhone, iPad ve Android için Litoo’yu keşfet.">
+  <meta name="theme-color" content="#101827">
+  <link rel="canonical" href="https://litooapp.com/app/">
+  <link rel="icon" type="image/webp" href="/assets/brand.webp">
+  <title>Litoo — İlk hikâyene başla</title>
+  <style>    :root {
+      --yellow: #fbcf21;
+      --yellow-dark: #e4b900;
+      --ink: #111827;
+      --ink-soft: #344054;
+      --paper: #fffdf4;
+      --white: #ffffff;
+      --line: rgba(17, 24, 39, .12);
+      --shadow: 0 28px 70px rgba(17, 24, 39, .18);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .brand { color: var(--white); display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 850; font-size: 1.25rem; }
+    .brand-mark {
+      display: block;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      box-shadow: 0 10px 24px rgba(251, 207, 33, .24);
+      object-fit: cover;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 20px;
+      color: var(--yellow);
+      font-weight: 750;
+      font-size: .86rem;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 30px; height: 2px; background: currentColor; }
+    .store-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .store-button {
+      display: inline-flex;
+      min-height: 58px;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 18px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 15px;
+      color: var(--white);
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(12px);
+      text-decoration: none;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .store-button:hover, .store-button:focus-visible { transform: translateY(-2px); border-color: var(--yellow); background: rgba(255,255,255,.12); }
+    .store-button svg { width: 27px; height: 27px; flex: 0 0 auto; }
+    .store-button small, .store-button strong { display: block; line-height: 1.08; }
+    .store-button small { margin-bottom: 4px; color: #bfc8d7; font-size: .68rem; }
+    .store-button strong { font-size: 1rem; }
+    :focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
+    body { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; color: var(--white); background: radial-gradient(circle at 18% 20%, rgba(251,207,33,.16), transparent 32%), linear-gradient(135deg, #101827 0%, #07101e 100%); }
+    header, footer { padding: 24px clamp(20px, 5vw, 64px); }
+    main { flex: 1; display: grid; place-items: center; padding: 40px 20px; }
+    .content { width: 100%; max-width: 640px; }
+    h1 { margin: 0; font-size: clamp(2.5rem, 7vw, 4rem); line-height: 1.12; letter-spacing: -.05em; }
+    h1 span { color: var(--yellow); }
+    .lead { margin: 24px 0 32px; color: #cad2df; font-size: 1.1rem; }
+    .note { margin-top: 28px; color: #bfc8d7; font-size: .9rem; }
+    footer { display: flex; flex-wrap: wrap; gap: 16px 32px; color: #bfc8d7; font-size: .9rem; }
+    footer a { text-underline-offset: 4px; }
+    @media (max-width: 580px) { .store-button { flex: 1 1 180px; justify-content: center; } }
+    @media (prefers-reduced-motion: reduce) { .store-button { transition: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/" aria-label="Litoo ana sayfa"><img class="brand-mark" src="/assets/brand.webp" width="42" height="42" alt=""><span>Litoo</span></a>
+  </header>
+  <main>
+    <div class="content">
+      <p class="eyebrow">Oku. Anla. Tekrar et.</p>
+      <h1>İlk hikâyene<br><span>Litoo’da başla.</span></h1>
+      <p class="lead" id="store-status" role="status">İngilizce okuma yolculuğuna başlamak için cihazına uygun mağazayı seç.</p>
+      <div class="store-row" aria-label="Litoo mağaza bağlantıları">
+            <a class="store-button" href="https://apps.apple.com/app/id6742233378" data-store="ios" data-placement="app" aria-label="Litoo’yu App Store’dan indir">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.79 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.1v-.01ZM12.03 7.25C11.88 5.02 13.69 3.18 15.77 3c.29 2.58-2.34 4.5-3.74 4.25Z"/></svg>
+              <span><small>iPhone için indir</small><strong>App Store</strong></span>
+            </a>
+            <a class="store-button" href="https://play.google.com/store/apps/details?id=com.defter.englishbooks" data-store="android" data-placement="app" aria-label="Litoo’yu Google Play’den indir">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#00D0FF" d="M3.6 2.1 13.7 12 3.6 21.9A1.9 1.9 0 0 1 3 20.5v-17c0-.55.22-1.05.6-1.4Z"/>
+                <path fill="#00E676" d="m3.6 2.1 12.2 6.95L13.7 12 3.6 2.1Z"/>
+                <path fill="#FF3D71" d="m13.7 12 2.1 2.95L3.6 21.9 13.7 12Z"/>
+                <path fill="#FFD500" d="m15.8 9.05 3.9 2.2c.8.45.8 1.05 0 1.5l-3.9 2.2L13.7 12l2.1-2.95Z"/>
+              </svg>
+              <span><small>Android için indir</small><strong>Google Play</strong></span>
+            </a>
+      </div>
+      <p class="note">İngilizce hikâyeler oku, kelimelerin anlamına bak ve öğrendiklerini tekrar et.</p>
+    </div>
+  </main>
+  <footer><a href="/">Litoo’yu keşfet</a><a href="/privacy_policy.html">Gizlilik Politikası</a></footer>
+  <script src="/assets/growth.js" defer></script>
+  <script src="/assets/app-redirect.js" defer></script>
+</body>
+</html>

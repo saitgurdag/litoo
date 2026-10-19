@@ -21,3 +21,9 @@ Android düğmeleri izin verilen kanal/kampanya etiketlerini taşır. Bu etiketl
 GitHub Pages kullanılıyorsa mevcut yayın dalı/dizini korunmalıdır. Depoda yalnızca statik dosyalar ve `CNAME` var; Pages ayarı doğrulanmadan barındırmanın Google veya GitHub olduğu kesin söylenemez. Bu değişikliği mevcut yayın yoluna dahil edin; Sites'ta farklı bir domain/proje oluşturulmadı.
 
 Yerel önizleme: `python3 -m http.server 4175 --bind 127.0.0.1`. Türkçe ana sayfa, `/en/`, gizlilik bağlantıları, telefonda taşma ve demo aç/kapat işlemi kontrol edilmeli. `robots.txt`/`sitemap.xml` indekslenme garantisi değildir.
+
+## Ortak mağaza bağlantısı
+
+Paylaşılacak adres: `https://litooapp.com/app` (statik dizin adresi `/app/`). Android Google Play’e, iPhone/iPad App Store’a yönlenir. Masaüstü, tanınmayan cihazlar ve JavaScript kapalı olduğunda iki mağaza bağlantısı gösterilir. Yönlendirme başarısız olursa bağlantılar sayfada kalır. Yeni servis veya uygulama değişikliği gerekmez.
+
+Mevcut izinli `utm_source` / `utm_campaign` etiketleri `/app` adresinde de kullanılabilir; Android bağlantıları `growth.js` tarafından güncellendikten sonra yönlendirme çalışır. iOS kampanya parametresi eklenmez. Yönlendirme hedefi sorgu parametrelerinden alınmaz.
