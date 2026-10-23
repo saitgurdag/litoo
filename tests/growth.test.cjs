@@ -54,3 +54,20 @@ test('existing reading campaigns keep working', () => {
   const result=run('?utm_source=instagram&utm_campaign=ig_reading_01');
   assert.equal(new URL(result.links[0].href).searchParams.get('utm_campaign'),'ig_reading_01');
 });
+
+test('short Instagram URL keeps profile attribution through both store links without JavaScript on the redirect page', () => {
+  const html=fs.readFileSync(require('node:path').join(__dirname,'../insta/app/index.html'),'utf8');
+  const redirect=html.match(/http-equiv="refresh" content="0; url=([^"]+)"/)[1].replaceAll('&amp;','&');
+  const fallback=html.match(/<a href="([^"]+)"/)[1].replaceAll('&amp;','&');
+  assert.equal(redirect,fallback);
+  const target=new URL(redirect,'https://litooapp.com');
+  assert.equal(target.origin,'https://litooapp.com');
+  assert.equal(target.pathname,'/app/');
+  const result=run(target.search);
+  const play=new URL(result.links[0].href);
+  const ref=new URLSearchParams(play.searchParams.get('referrer'));
+  assert.equal(ref.get('utm_source'),'instagram');
+  assert.equal(ref.get('utm_content'),'profile');
+  assert.equal(ref.get('utm_campaign'),'story_quiz_pilot_202610');
+  assert.equal(new URL(result.links[1].href).searchParams.get('ct'),'ig_story_quiz_202610');
+});
