@@ -35,8 +35,8 @@ Bu pilotta paylaşılacak profil bağlantıları:
 - Instagram: `https://litooapp.com/app/?utm_source=instagram&utm_medium=organic_social&utm_campaign=story_quiz_pilot_202610&utm_content=profile`
 - YouTube: `https://litooapp.com/app/?utm_source=youtube&utm_medium=organic_social&utm_campaign=story_quiz_pilot_202610&utm_content=profile`
 
-Instagram profilinde görünen kısa adres: **`https://litooapp.com/insta/app`**.
-`insta/app/index.html`, yukarıdaki etiketli Instagram bağlantısına sabit HTML
+Instagram profilinde görünen kısa adres: **`https://litooapp.com/instagram`**.
+`instagram/index.html`, yukarıdaki etiketli Instagram bağlantısına sabit HTML
 yönlendirmesi yapar. Head içindeki `location.replace` yönlendirmeyi gövde
 çizilmeden başlatır; manuel devam metni yalnız JavaScript kapalıyken görünür.
 HTML meta refresh yedeği JavaScript kapalıyken de çalışır. Sorgudaki keyfi hedefler kullanılmaz. Kampanya değişirse kısa adresin
@@ -66,8 +66,8 @@ Merkezi web analytics sağlayıcısı eklenmedi; yerel `litoo_growth` olayı hal
 yalnız bir entegrasyon noktasıdır, tıklama sayacı değildir. Yeni tracker veya
 çerez yok. Regresyon: `node --test tests/growth.test.cjs`.
 
-YouTube profilinde görünen kısa adres: **`https://litooapp.com/youtube/app`**.
-`youtube/app/index.html`, etiketli YouTube /app/ bağlantısına yönlenir;
+YouTube profilinde görünen kısa adres: **`https://litooapp.com/youtube`**.
+`youtube/index.html`, etiketli YouTube /app/ bağlantısına yönlenir;
 Android referrer ve iOS `yt_story_quiz_202610` kampanyası korunur.
 
 ## Güncel kısa profil adresleri
@@ -76,4 +76,4 @@ Android referrer ve iOS `yt_story_quiz_202610` kampanyası korunur.
 - YouTube: `https://litooapp.com/youtube`
 
 Bu adresler etiketli `/app/` hedefine doğrudan yönlenir. Eski `/insta/app` ve
-`/youtube/app` adresleri mevcut paylaşımlar için çalışmaya devam eder.
+`/youtube/app` adresleri kaldırıldı.

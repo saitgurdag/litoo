@@ -56,7 +56,7 @@ test('existing reading campaigns keep working', () => {
 });
 
 test('short Instagram URL keeps profile attribution through both store links without JavaScript on the redirect page', () => {
-  const html=fs.readFileSync(require('node:path').join(__dirname,'../insta/app/index.html'),'utf8');
+  const html=fs.readFileSync(require('node:path').join(__dirname,'../instagram/index.html'),'utf8');
   const redirect=html.match(/http-equiv="refresh" content="0; url=([^"]+)"/)[1].replaceAll('&amp;','&');
   const fallback=html.match(/<a href="([^"]+)"/)[1].replaceAll('&amp;','&');
   assert.equal(redirect,fallback);
@@ -73,7 +73,7 @@ test('short Instagram URL keeps profile attribution through both store links wit
 });
 
 test('short YouTube URL keeps profile attribution through both store links without JavaScript on the redirect page', () => {
-  const html=fs.readFileSync(require('node:path').join(__dirname,'../youtube/app/index.html'),'utf8');
+  const html=fs.readFileSync(require('node:path').join(__dirname,'../youtube/index.html'),'utf8');
   const redirect=html.match(/http-equiv="refresh" content="0; url=([^"]+)"/)[1].replaceAll('&amp;','&');
   const fallback=html.match(/<a href="([^"]+)"/)[1].replaceAll('&amp;','&');
   assert.equal(redirect,fallback);
@@ -89,9 +89,9 @@ test('short YouTube URL keeps profile attribution through both store links witho
   assert.equal(new URL(result.links[1].href).searchParams.get('ct'),'yt_story_quiz_202610');
 });
 
-for (const channel of ['insta', 'youtube']) {
+for (const channel of ['instagram', 'youtube']) {
   test(`${channel} redirects in the head without painting the intermediate message`, () => {
-    const html = fs.readFileSync(require('node:path').join(__dirname, `../${channel}/app/index.html`), 'utf8');
+    const html = fs.readFileSync(require('node:path').join(__dirname, `../${channel}/index.html`), 'utf8');
     const inline = html.match(/<script>([\s\S]*?)<\/script>/)[1];
     const destinations = [];
     vm.runInNewContext(inline, {window: {location: {replace(url) {destinations.push(url);}}}});
@@ -101,18 +101,5 @@ for (const channel of ['insta', 'youtube']) {
     const body = html.match(/<body>([\s\S]*?)<\/body>/)[1];
     assert.equal(body.replace(/<noscript>[\s\S]*?<\/noscript>/, '').trim(), '');
     assert.match(body, /<noscript>[\s\S]*<a href=/);
-  });
-}
-
-for (const [route, source] of [['instagram', 'instagram'], ['youtube', 'youtube']]) {
-  test(`${route} profile URL preserves the legacy redirect and store attribution`, () => {
-    const html = fs.readFileSync(require('node:path').join(__dirname, `../${route}/index.html`), 'utf8');
-    const legacy = fs.readFileSync(require('node:path').join(__dirname, `../${source === 'instagram' ? 'insta' : 'youtube'}/app/index.html`), 'utf8');
-    assert.equal(html, legacy);
-    let target;
-    vm.runInNewContext(html.match(/<script>([\s\S]*?)<\/script>/)[1], {window: {location: {replace(url) {target = new URL(url, 'https://litooapp.com');}}}});
-    const links = run(target.search).links;
-    assert.equal(new URLSearchParams(new URL(links[0].href).searchParams.get('referrer')).get('utm_source'), source);
-    assert.equal(new URL(links[1].href).searchParams.get('ct'), source === 'instagram' ? 'ig_story_quiz_202610' : 'yt_story_quiz_202610');
   });
 }
