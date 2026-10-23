@@ -69,3 +69,11 @@ yalnız bir entegrasyon noktasıdır, tıklama sayacı değildir. Yeni tracker v
 YouTube profilinde görünen kısa adres: **`https://litooapp.com/youtube/app`**.
 `youtube/app/index.html`, etiketli YouTube /app/ bağlantısına yönlenir;
 Android referrer ve iOS `yt_story_quiz_202610` kampanyası korunur.
+
+## Güncel kısa profil adresleri
+
+- Instagram: `https://litooapp.com/instagram`
+- YouTube: `https://litooapp.com/youtube`
+
+Bu adresler etiketli `/app/` hedefine doğrudan yönlenir. Eski `/insta/app` ve
+`/youtube/app` adresleri mevcut paylaşımlar için çalışmaya devam eder.

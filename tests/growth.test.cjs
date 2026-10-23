@@ -103,3 +103,16 @@ for (const channel of ['insta', 'youtube']) {
     assert.match(body, /<noscript>[\s\S]*<a href=/);
   });
 }
+
+for (const [route, source] of [['instagram', 'instagram'], ['youtube', 'youtube']]) {
+  test(`${route} profile URL preserves the legacy redirect and store attribution`, () => {
+    const html = fs.readFileSync(require('node:path').join(__dirname, `../${route}/index.html`), 'utf8');
+    const legacy = fs.readFileSync(require('node:path').join(__dirname, `../${source === 'instagram' ? 'insta' : 'youtube'}/app/index.html`), 'utf8');
+    assert.equal(html, legacy);
+    let target;
+    vm.runInNewContext(html.match(/<script>([\s\S]*?)<\/script>/)[1], {window: {location: {replace(url) {target = new URL(url, 'https://litooapp.com');}}}});
+    const links = run(target.search).links;
+    assert.equal(new URLSearchParams(new URL(links[0].href).searchParams.get('referrer')).get('utm_source'), source);
+    assert.equal(new URL(links[1].href).searchParams.get('ct'), source === 'instagram' ? 'ig_story_quiz_202610' : 'yt_story_quiz_202610');
+  });
+}
