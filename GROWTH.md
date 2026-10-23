@@ -64,3 +64,7 @@ RevenueCat'teki bireysel müşteri veya gelire kendiliğinden bağlanmaz.
 Merkezi web analytics sağlayıcısı eklenmedi; yerel `litoo_growth` olayı halen
 yalnız bir entegrasyon noktasıdır, tıklama sayacı değildir. Yeni tracker veya
 çerez yok. Regresyon: `node --test tests/growth.test.cjs`.
+
+YouTube profilinde görünen kısa adres: **`https://litooapp.com/youtube/app`**.
+`youtube/app/index.html`, etiketli YouTube /app/ bağlantısına yönlenir;
+Android referrer ve iOS `yt_story_quiz_202610` kampanyası korunur.
