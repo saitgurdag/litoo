@@ -88,3 +88,18 @@ test('short YouTube URL keeps profile attribution through both store links witho
   assert.equal(ref.get('utm_campaign'),'story_quiz_pilot_202610');
   assert.equal(new URL(result.links[1].href).searchParams.get('ct'),'yt_story_quiz_202610');
 });
+
+for (const channel of ['insta', 'youtube']) {
+  test(`${channel} redirects in the head without painting the intermediate message`, () => {
+    const html = fs.readFileSync(require('node:path').join(__dirname, `../${channel}/app/index.html`), 'utf8');
+    const inline = html.match(/<script>([\s\S]*?)<\/script>/)[1];
+    const destinations = [];
+    vm.runInNewContext(inline, {window: {location: {replace(url) {destinations.push(url);}}}});
+    const meta = html.match(/http-equiv="refresh" content="0; url=([^"]+)"/)[1].replaceAll('&amp;', '&');
+    assert.deepEqual(destinations, [meta]);
+    assert.ok(html.indexOf('<script>') < html.indexOf('</head>'));
+    const body = html.match(/<body>([\s\S]*?)<\/body>/)[1];
+    assert.equal(body.replace(/<noscript>[\s\S]*?<\/noscript>/, '').trim(), '');
+    assert.match(body, /<noscript>[\s\S]*<a href=/);
+  });
+}

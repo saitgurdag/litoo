@@ -37,8 +37,9 @@ Bu pilotta paylaşılacak profil bağlantıları:
 
 Instagram profilinde görünen kısa adres: **`https://litooapp.com/insta/app`**.
 `insta/app/index.html`, yukarıdaki etiketli Instagram bağlantısına sabit HTML
-yönlendirmesi yapar; JavaScript kapalıyken de çalışır ve manuel devam bağlantısı
-bulunur. Sorgudaki keyfi hedefler kullanılmaz. Kampanya değişirse kısa adresin
+yönlendirmesi yapar. Head içindeki `location.replace` yönlendirmeyi gövde
+çizilmeden başlatır; manuel devam metni yalnız JavaScript kapalıyken görünür.
+HTML meta refresh yedeği JavaScript kapalıyken de çalışır. Sorgudaki keyfi hedefler kullanılmaz. Kampanya değişirse kısa adresin
 hedefini burada güncelleyin; profil bağlantısı aynı kalabilir.
 
 `utm_content=mountains_hiking_01` bu tek videoya özel doğrudan bağlantılarda
