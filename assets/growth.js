@@ -30,8 +30,9 @@
       url.searchParams.set('referrer', referrer.toString());
       link.href = url.toString();
     }
-    // Generated in this app's App Store Connect campaign builder on 2026-10-23.
-    const appleCampaigns = {instagram: 'ig_story_quiz_202610', youtube: 'yt_story_quiz_202610'};
+    // Generated in this app's App Store Connect campaign builder
+    // (instagram/youtube on 2026-10-23, tiktok on 2026-11-12).
+    const appleCampaigns = {instagram: 'ig_story_quiz_202610', youtube: 'yt_story_quiz_202610', tiktok: 'tt_story_quiz_202610'};
     if (link.dataset.store === 'ios' && campaign === 'story_quiz_pilot_202610' && appleCampaigns[source]) {
       const url = new URL('https://apps.apple.com/app/apple-store/id6742233378');
       url.searchParams.set('pt', '127604962');

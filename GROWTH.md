@@ -74,6 +74,21 @@ Android referrer ve iOS `yt_story_quiz_202610` kampanyası korunur.
 
 - Instagram: `https://litooapp.com/instagram`
 - YouTube: `https://litooapp.com/youtube`
+- TikTok: `https://litooapp.com/t`
 
 Bu adresler etiketli `/app/` hedefine doğrudan yönlenir. Eski `/insta/app` ve
 `/youtube/app` adresleri kaldırıldı.
+
+## TikTok kısa adresi — 12 Kasım 2026
+
+`t/index.html`, Instagram/YouTube ile aynı yapıda
+`/app/?utm_source=tiktok&utm_medium=organic_social&utm_campaign=story_quiz_pilot_202610&utm_content=profile`
+hedefine yönlenir. Android Play bağlantısında `referrer` içinde
+`utm_source=tiktok` taşınır; TikTok ziyaretleri kaynak alanıyla ayrılır.
+
+iOS'ta App Store Connect kampanya oluşturucusundan 12 Kasım 2026'da alınan
+bağlantı kullanılır (`growth.js` → `appleCampaigns.tiktok`):
+
+- TikTok: `https://apps.apple.com/app/apple-store/id6742233378?pt=127604962&ct=tt_story_quiz_202610&mt=8`
+
+Apple kampanya raporundaki eşikler (en az beş hesap, gecikme) burada da geçerlidir.

@@ -89,7 +89,28 @@ test('short YouTube URL keeps profile attribution through both store links witho
   assert.equal(new URL(result.links[1].href).searchParams.get('ct'),'yt_story_quiz_202610');
 });
 
-for (const channel of ['instagram', 'youtube']) {
+test('short TikTok URL (/t) keeps profile attribution through both store links', () => {
+  const html=fs.readFileSync(require('node:path').join(__dirname,'../t/index.html'),'utf8');
+  const redirect=html.match(/http-equiv="refresh" content="0; url=([^"]+)"/)[1].replaceAll('&amp;','&');
+  const fallback=html.match(/<a href="([^"]+)"/)[1].replaceAll('&amp;','&');
+  assert.equal(redirect,fallback);
+  const target=new URL(redirect,'https://litooapp.com');
+  assert.equal(target.origin,'https://litooapp.com');
+  assert.equal(target.pathname,'/app/');
+  const result=run(target.search);
+  const play=new URL(result.links[0].href);
+  const ref=new URLSearchParams(play.searchParams.get('referrer'));
+  assert.equal(ref.get('utm_source'),'tiktok');
+  assert.equal(ref.get('utm_medium'),'organic_social');
+  assert.equal(ref.get('utm_content'),'profile');
+  assert.equal(ref.get('utm_campaign'),'story_quiz_pilot_202610');
+  const apple=new URL(result.links[1].href);
+  assert.equal(apple.pathname,'/app/apple-store/id6742233378');
+  assert.equal(apple.searchParams.get('pt'),'127604962');
+  assert.equal(apple.searchParams.get('ct'),'tt_story_quiz_202610');
+});
+
+for (const channel of ['instagram', 'youtube', 't']) {
   test(`${channel} redirects in the head without painting the intermediate message`, () => {
     const html = fs.readFileSync(require('node:path').join(__dirname, `../${channel}/index.html`), 'utf8');
     const inline = html.match(/<script>([\s\S]*?)<\/script>/)[1];
